@@ -58,7 +58,7 @@ class Dao{
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-            //    START: Updated by HaTT 20160719
+            //    START: Updated by Vulq 20160719
             //    Logging
             $debug_sql = $this_->interpolateQuery($sProcedure, $aParams);
             $log_path =  public_path().'/log/';
@@ -74,11 +74,11 @@ class Dao{
             file_put_contents($file_path, $time . ' ' . $debug_sql . PHP_EOL, FILE_APPEND);
             //    Debug
             
-            // START: Updated by HaTT 20160719
+            // START: Updated by Vulq 20160719
 
             $result = array();
             $i = 0;
-            // START: Updated by HaTT 20160704
+            // START: Updated by Vulq 20160704
             do {
                 while($respon = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     foreach ($respon as $key_from_encoding => $res_from_encoding) {
@@ -90,30 +90,30 @@ class Dao{
                     }
                     $result[$i][] = $respon;
                 }
-                //Comment by kyvd 20160711
+                //Comment by Vulq 20160711
                 //if(!isset($result[$i])) {
                 //$result[$i] = $this_->getColumns($stmt, $option);
                 //}
                 $i++;
             } while ($stmt->nextRowset());
-            // END: Updated by HaTT 20160704
+            // END: Updated by Vulq 20160704
 
          }catch (\Exception $e) {
-            // START: Updated by HaTT 20160725
+            // START: Updated by Vulq 20160725
             $result[0][0] = array(
                     'Id'      => '',
                     'Code'    => $e->getCode(),
                     'Data'    => self::EXCEPTION,
                     'Message' => 'PHP: '.$e->getMessage()
             );
-            // END: Updated by HaTT 20160725
+            // END: Updated by Vulq 20160725
         }
         return $result;
     }
     /**
      * interpolateQuery
      *
-     * @author      :   hatt     - 2016/07/19 - create
+     * @author      :   Vulq     - 2016/07/19 - create
      * @author      :
      * @param       :   $query,$params
      * @return      :
@@ -132,7 +132,7 @@ class Dao{
     /**
      * debugQuery
      *
-     * @author      :   hatt     - 2016/07/19 - create
+     * @author      :   Vulq     - 2016/07/19 - create
      * @author      :
      * @param       :   $query,$params
      * @return      :
@@ -179,7 +179,7 @@ class Dao{
     /**
      * setDefaultByType
      *
-     * @author      :   giangnt     - 2015/05/08 - create
+     * @author      :   Vulq     - 2015/05/08 - create
      * @author      :
      * @param       :   $mssql_type
      * @return      :
@@ -256,7 +256,7 @@ class Dao{
         if ($input === NULL){
             $input = NULL;
         }
-        // END: Add by SangTK 20160726
+        // END: Add by vVulq 20160726
         //$input = rtrim($input);
         return $input;
     }
