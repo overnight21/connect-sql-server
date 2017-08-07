@@ -252,7 +252,7 @@ class Dao{
         $input = str_replace('_', '[_]', $input);
         $input = str_replace('\\', '[\\]', $input);
         $input = str_replace('\'', '\'\'', $input);
-        // START: Add by SangTK 20160726
+        // START: Add by vVulq 20160726
         if ($input === NULL){
             $input = NULL;
         }
